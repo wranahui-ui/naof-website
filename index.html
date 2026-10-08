@@ -4,16 +4,16 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <meta name="theme-color" content="#0a101d">
-  <meta name="description" content="NAOF is an early-stage research and engineering project exploring accountable, auditable AI workflow orchestration.">
+  <meta name="description" content="NAOF is an early-stage, self-funded framework for auditable AI orchestration, starting with controlled software engineering workflows and exploring future enterprise and education use cases.">
   <meta property="og:type" content="website">
-  <meta property="og:title" content="NAOF — Accountable AI workflows">
-  <meta property="og:description" content="An early-stage framework exploring deterministic orchestration, evidence traceability and human oversight.">
+  <meta property="og:title" content="NAOF — AI workflows. Accountability by design.">
+  <meta property="og:description" content="Early-stage AI orchestration engineering focused on deterministic controls, evidence and human oversight, with ambitions for enterprise solutions and education in Santiago del Estero.">
   <title>NAOF — Nahuel AI Orchestration Framework</title>
   <style>
     :root { color-scheme:dark; --bg:#0a101d; --panel:#111d2f; --line:#28384d; --text:#f2f6fb; --muted:#a4b2c5; --accent:#7ce3d5; --max:1120px; }
     *, *::before, *::after { box-sizing:border-box; }
     html { scroll-behavior:smooth; }
-    body { margin:0; background:var(--bg); color:var(--text); font-family:Inter, ui-sans-serif, system-ui,-apple-system,BlinkMacSystemFont,"Segoe UI",sans-serif; line-height:1.65; }
+    body { margin:0; background:var(--bg); color:var(--text); font-family:Inter,ui-sans-serif,system-ui,-apple-system,BlinkMacSystemFont,"Segoe UI",sans-serif; line-height:1.65; }
     body::before { content:""; position:absolute; inset:0 0 auto; height:750px; pointer-events:none; z-index:-1; background:radial-gradient(ellipse 48% 40% at 80% 30%,rgba(56,117,153,.20),transparent 74%),radial-gradient(ellipse 50% 35% at 16% 2%,rgba(33,134,113,.14),transparent 75%); }
     a { color:inherit; text-decoration:none; }
     a:focus-visible { outline:2px solid var(--accent); outline-offset:4px; }
@@ -22,83 +22,112 @@
     .wrap { width:min(calc(100% - 42px),var(--max)); margin:auto; }
     header { border-bottom:1px solid rgba(255,255,255,.08); }
     .nav { min-height:78px; display:flex; justify-content:space-between; align-items:center; gap:20px; }
-    .brand { display:flex; align-items:center; gap:12px; font-weight:800; letter-spacing:.12em; }
+    .brand { display:flex; align-items:center; gap:12px; font-weight:800; letter-spacing:.12em; white-space:nowrap; }
     .brand-mark { display:grid; place-items:center; width:37px; height:37px; border:1px solid rgba(124,227,213,.49); color:var(--accent); background:rgba(124,227,213,.08); border-radius:12px; letter-spacing:0; }
-    nav { display:flex; gap:25px; color:var(--muted); font-size:.89rem; }
+    nav { display:flex; flex-wrap:wrap; gap:18px; color:var(--muted); font-size:.88rem; }
+    nav a { white-space:nowrap; }
     nav a:hover, footer a:hover { color:var(--accent); }
-    .hero { padding:108px 0 92px; }
-    .eyebrow { display:inline-flex; align-items:center; gap:10px; color:var(--accent); font-size:.76rem; font-weight:750; letter-spacing:.16em; text-transform:uppercase; }
-    .eyebrow::before { content:""; width:8px; height:8px; background:var(--accent); border-radius:50%; box-shadow:0 0 16px rgba(124,227,213,.75); }
+    .hero { padding:105px 0 88px; }
+    .eyebrow { display:inline-flex; align-items:center; gap:10px; color:var(--accent); font-size:.76rem; font-weight:750; letter-spacing:.14em; text-transform:uppercase; }
+    .eyebrow::before { content:""; flex:0 0 auto; width:8px; height:8px; background:var(--accent); border-radius:50%; box-shadow:0 0 16px rgba(124,227,213,.75); }
     h1 { font-size:clamp(3rem,7.2vw,6.4rem); line-height:1.08; letter-spacing:-.062em; margin:28px 0; font-weight:750; max-width:1000px; }
     h1 em { color:var(--accent); font-style:normal; }
-    .lead { color:var(--muted); font-size:clamp(1.07rem,2vw,1.26rem); line-height:1.87; max-width:715px; }
+    .lead { color:var(--muted); font-size:clamp(1.07rem,2vw,1.26rem); line-height:1.8; max-width:785px; }
     .buttons { display:flex; gap:12px; flex-wrap:wrap; margin-top:32px; }
     .button { display:inline-flex; min-height:48px; align-items:center; justify-content:center; padding:10px 20px; border-radius:10px; font-size:.92rem; font-weight:720; border:1px solid var(--line); transition:transform .2s,border-color .2s; }
     .button:hover { transform:translateY(-2px); border-color:var(--accent); }
     .primary { background:var(--accent); border-color:var(--accent); color:#071a1d; }
     .secondary { background:rgba(255,255,255,.035); }
-    .hero-note { margin-top:20px; color:#8295ae; font-size:.84rem; }
+    .hero-note { margin-top:20px; color:#91a2b9; font-size:.84rem; }
     .signal { margin-top:58px; display:grid; grid-template-columns:repeat(4,minmax(0,1fr)); border:1px solid var(--line); border-radius:15px; background:linear-gradient(115deg,#152339,#0d192a); overflow:hidden; }
     .signal span { text-align:center; padding:21px 12px; color:#c0cfe0; font-size:.78rem; font-weight:700; text-transform:uppercase; letter-spacing:.09em; }
     .signal span:not(:last-child) { border-right:1px solid var(--line); }
-    section { padding:84px 0; }
-    .section-header { max-width:740px; margin-bottom:36px; }
-    .kicker { color:var(--accent); text-transform:uppercase; letter-spacing:.17em; font-size:.76rem; font-weight:800; }
+    section { padding:84px 0; scroll-margin-top:15px; }
+    .section-header { max-width:760px; margin-bottom:36px; }
+    .kicker { color:var(--accent); text-transform:uppercase; letter-spacing:.16em; font-size:.76rem; font-weight:800; }
     h2 { font-size:clamp(2rem,4.25vw,3.25rem); line-height:1.2; letter-spacing:-.046em; margin:11px 0 18px; }
     .intro { color:var(--muted); font-size:1.07rem; }
     .three { display:grid; grid-template-columns:repeat(3,minmax(0,1fr)); gap:16px; }
-    .card { border:1px solid var(--line); border-radius:16px; padding:28px; background:linear-gradient(145deg,var(--panel),#0c1727); }
-    .num { font-size:.83rem; font-weight:800; color:var(--accent); letter-spacing:.13em; }
-    h3 { margin:19px 0 9px; font-size:1.2rem; letter-spacing:-.025em; }
-    .card p { font-size:.95rem; color:var(--muted); margin:0; }
-    .status { background:rgba(17,29,47,.68); border-block:1px solid var(--line); }
     .two { display:grid; grid-template-columns:1.2fr .8fr; align-items:center; gap:52px; }
+    .solution-grid { display:grid; grid-template-columns:repeat(2,minmax(0,1fr)); gap:16px; }
+    .card { border:1px solid var(--line); border-radius:16px; padding:28px; background:linear-gradient(145deg,var(--panel),#0c1727); }
+    .num { font-size:.81rem; font-weight:800; color:var(--accent); letter-spacing:.12em; }
+    h3 { margin:17px 0 9px; font-size:1.2rem; letter-spacing:-.025em; }
+    .card p { font-size:.95rem; color:var(--muted); margin:0; }
+    .subnote { color:var(--muted); font-size:.89rem; margin:22px 0 0; }
+    .status { background:rgba(17,29,47,.68); border-block:1px solid var(--line); }
+    .muted { color:var(--muted); }
+    .muted strong { color:var(--text); font-weight:700; }
     .check-list { list-style:none; padding:0; margin:27px 0 0; display:grid; gap:12px; }
     .check-list li { display:flex; gap:11px; align-items:flex-start; color:#c8d5e5; }
     .check-list li::before { content:"✓"; font-weight:800; color:var(--accent); }
     .note { border:1px solid rgba(124,227,213,.25); border-radius:16px; padding:29px; background:linear-gradient(140deg,rgba(21,64,69,.44),rgba(16,29,47,.85)); }
-    .note strong { display:block; font-size:1.45rem; margin:15px 0 8px; }
+    .note strong { display:block; font-size:1.32rem; line-height:1.42; margin:15px 0 8px; }
     .note p, .vision p { color:var(--muted); }
     .future { background:var(--panel); border:1px solid var(--line); border-radius:15px; padding:27px; }
     .future strong { font-size:.93rem; }
-    .future p { font-size:.91rem; margin:6px 0 0; }
+    .future p { color:var(--muted); font-size:.91rem; margin:6px 0 0; }
     .future hr { border:0; border-top:1px solid var(--line); margin:19px 0; }
     .contact { padding:45px 0 90px; }
     .contact-box { padding:clamp(26px,5vw,50px); border-radius:20px; border:1px solid var(--line); background:linear-gradient(115deg,#142c43,#111d2f 73%); }
     .contact-box h2 { max-width:735px; }
-    .contact-box p { color:var(--muted); max-width:680px; }
+    .contact-box p { color:var(--muted); max-width:760px; }
     footer { border-top:1px solid var(--line); padding:28px 0 36px; font-size:.83rem; color:#899bb1; }
     .footer-inner { display:flex; flex-wrap:wrap; align-items:center; justify-content:space-between; gap:15px; }
-    @media(max-width:770px) { .hero {padding:74px 0 68px;} section {padding:62px 0;} .three,.two {grid-template-columns:1fr;} .two {gap:28px;} .signal {grid-template-columns:1fr 1fr;} .signal span:nth-child(2){border-right:0;} .signal span:nth-child(-n+2){border-bottom:1px solid var(--line);} nav {gap:13px; font-size:.79rem;} }
-    @media(max-width:410px) { nav a:nth-child(2){display:none;} .wrap {width:min(calc(100% - 30px),var(--max));} }
-    @media(prefers-reduced-motion:reduce) { html{scroll-behavior:auto;} .button{transition:none;} }
+    @media(max-width:880px) { .nav { flex-wrap:wrap; padding-block:16px; gap:12px; } }
+    @media(max-width:770px) { .hero {padding:74px 0 68px;} section {padding:62px 0;} .three,.two,.solution-grid {grid-template-columns:1fr;} .two {gap:28px;} .signal {grid-template-columns:1fr 1fr;} .signal span:nth-child(2) {border-right:0;} .signal span:nth-child(-n+2) {border-bottom:1px solid var(--line);} nav {gap:8px 15px; font-size:.83rem;} }
+    @media(max-width:410px) { .wrap {width:min(calc(100% - 30px),var(--max));} .signal span {font-size:.7rem;padding:17px 8px;} .card {padding:23px;} }
+    @media(prefers-reduced-motion:reduce) { html {scroll-behavior:auto;} .button {transition:none;} }
   </style>
 </head>
 <body>
   <a class="skip" href="#content">Skip to content</a>
-  <header><div class="wrap nav"><a class="brand" href="#top" aria-label="NAOF home"><span class="brand-mark" aria-hidden="true">N</span> NAOF</a><nav aria-label="Main navigation"><a href="#approach">Approach</a><a href="#status">Development</a><a href="#vision">Vision</a></nav></div></header>
+  <header><div class="wrap nav"><a class="brand" href="#top" aria-label="NAOF home"><span class="brand-mark" aria-hidden="true">N</span> NAOF</a><nav aria-label="Main navigation"><a href="#solutions">Solutions</a><a href="#claude">Claude R&amp;D</a><a href="#education">Education</a><a href="#status">Status</a><a href="#contact">Contact</a></nav></div></header>
   <main id="content">
     <div class="wrap" id="top"><div class="hero">
-      <div class="eyebrow">Independent research &amp; engineering project</div>
+      <div class="eyebrow">Early-stage, self-funded technology project · Argentina</div>
       <h1>AI workflows.<br><em>Accountability by design.</em></h1>
-      <p class="lead">NAOF — the Nahuel AI Orchestration Framework — explores how AI-assisted work can become more traceable, controlled, and auditable through deterministic coordination and explicit human oversight.</p>
-      <div class="buttons"><a class="button primary" href="#approach">Explore the approach ↗</a><a class="button secondary" href="#status">Development status</a></div>
-      <p class="hero-note">Early-stage development · Self-funded · Built independently in Argentina</p>
+      <p class="lead">NAOF — the Nahuel AI Orchestration Framework — is being developed to make AI-assisted workflows more traceable, controlled and auditable. Our first product direction is accountable AI-assisted software engineering, with a long-term vision for enterprise and educational applications.</p>
+      <div class="buttons"><a class="button primary" href="#solutions">Explore applications ↗</a><a class="button secondary" href="#status">What exists today</a></div>
+      <p class="hero-note">Independent founder · Santiago del Estero, Argentina · Pre-commercial development</p>
       <div class="signal" aria-label="Core design themes"><span>Deterministic controls</span><span>Traceable evidence</span><span>Human oversight</span><span>Independent review</span></div>
     </div></div>
-    <section id="approach" aria-labelledby="approach-title"><div class="wrap"><div class="section-header"><div class="kicker">Our approach</div><h2 id="approach-title">AI workflows need more than automation.</h2><p class="intro">NAOF is being developed around explicit constraints and verifiable evidence, rather than treating agent outputs as automatically trustworthy.</p></div>
+    <section id="approach" aria-labelledby="approach-title"><div class="wrap"><div class="section-header"><div class="kicker">Our approach</div><h2 id="approach-title">AI workflows need more than automation.</h2><p class="intro">NAOF is being developed around explicit constraints and verifiable evidence, rather than treating model outputs as automatically trustworthy.</p></div>
       <div class="three">
         <article class="card"><span class="num">01 / CONTROL</span><h3>Deterministic orchestration</h3><p>Structured workflow states, predefined decision boundaries, and clearly scoped execution paths.</p></article>
         <article class="card"><span class="num">02 / EVIDENCE</span><h3>Traceability first</h3><p>Records and checkpoints designed to make workflow decisions and outcomes inspectable.</p></article>
         <article class="card"><span class="num">03 / OVERSIGHT</span><h3>Human authority</h3><p>Separating automated processing, independent review, and decisions that require explicit human approval.</p></article>
       </div></div></section>
-    <section class="status" id="status" aria-labelledby="status-title"><div class="wrap two"><div><div class="kicker">Development status</div><h2 id="status-title">Research-led. Tested. Still evolving.</h2><p class="intro">NAOF is an early-stage engineering project, not a production-ready commercial service. The reference implementation has a deterministic, local read-only foundation; further workflow capabilities are being developed and independently evaluated.</p>
-      <ul class="check-list"><li>Documented architecture and implementation boundaries</li><li>Read-only kernel and routing foundation</li><li>Automated testing and independent audit practices</li><li>Ongoing development of controlled shadow workflows</li></ul></div>
-      <aside class="note"><div class="kicker">Current position</div><strong>Pre-commercial development</strong><p>Product-market fit, integrations and production deployment remain future work. No live customer deployment or general-purpose autonomous agent runtime is claimed.</p></aside></div></section>
-    <section class="vision" id="vision" aria-labelledby="vision-title"><div class="wrap two"><div><div class="kicker">Long-term vision</div><h2 id="vision-title">AI systems organizations can understand and govern.</h2><p>Our goal is to explore practical ways for teams to coordinate AI-assisted operations with clear responsibility, evidence and review. Potential application areas include software delivery, research workflows and accountable business automation.</p><p>These are directions under exploration, not capabilities or commercial offerings currently available.</p></div>
+    <section id="solutions" aria-labelledby="solutions-title"><div class="wrap">
+      <div class="section-header"><div class="kicker">Product direction</div><h2 id="solutions-title">Built for accountable AI-assisted work.</h2><p class="intro">Our initial focus is software engineering. Other applications represent longer-term opportunities to explore—not products available today.</p></div>
+      <div class="solution-grid">
+        <article class="card"><span class="num">INITIAL FOCUS</span><h3>Software engineering workflows</h3><p>A proposed foundation for controlled AI-assisted development, code review, testing and technical documentation—with explicit checks, evidence and human approval boundaries.</p></article>
+        <article class="card"><span class="num">FUTURE DIRECTION</span><h3>Enterprise process automation</h3><p>Potential orchestration of bounded business workflows, keeping actions observable and authorization separate from execution.</p></article>
+        <article class="card"><span class="num">FUTURE DIRECTION</span><h3>Research and document analysis</h3><p>Possible workflows for structured investigation, document comparison, information extraction and traceable research outputs.</p></article>
+        <article class="card"><span class="num">FUTURE DIRECTION</span><h3>Data validation and decision support</h3><p>Exploring ways to verify outputs, record supporting evidence and keep consequential decisions under human responsibility.</p></article>
+      </div>
+      <p class="subnote">These are development directions. NAOF does not currently offer commercial deployments or production-ready autonomous AI workflows.</p>
+    </div></section>
+    <section class="status" id="claude" aria-labelledby="claude-title"><div class="wrap two">
+      <div><div class="kicker">AI provider research</div><h2 id="claude-title">Exploring a controlled Claude API prototype.</h2>
+      <p class="intro">We plan to evaluate Claude as one potential model provider for bounded AI-assisted software engineering workflows. A proposed proof of concept would receive a structured task, invoke an AI model under defined limits, capture outputs, apply validation checks and prepare evidence for human review.</p>
+      <p class="muted">This integration is <strong>planned research</strong>, not a feature currently implemented or deployed. NAOF is designed to remain extensible across model providers.</p></div>
+      <aside class="note"><div class="kicker">Planned experiment</div><strong>Task → model → checks → evidence → human review</strong><p>We aim to test whether traceability and policy-based controls can improve how AI-assisted work is evaluated. No Anthropic partnership, program acceptance or live Claude integration is claimed.</p></aside>
+    </div></section>
+    <section id="education" aria-labelledby="education-title"><div class="wrap two">
+      <div><div class="kicker">Education &amp; regional impact</div><h2 id="education-title">A longer-term vision for Santiago del Estero.</h2>
+      <p class="intro">Beyond enterprise applications, NAOF's founder hopes to explore responsible AI tools that could help teachers and students in Santiago del Estero, Argentina.</p>
+      <p class="muted">Possible uses include adaptive explanations, practice exercises, science and mathematics learning support, and tools that assist educators in identifying recurring difficulties. <strong>AI should support teachers, not replace them.</strong></p>
+      <p class="muted">Any future educational pilot would require institutional involvement, appropriate safeguards for minors, student privacy, accessibility and curricular alignment. There are no school deployments or institutional partnerships at this stage.</p></div>
+      <aside class="future"><strong>Support educators</strong><p>Human teachers remain responsible for educational decisions.</p><hr><strong>Explore carefully</strong><p>Begin with small, evaluated pilots only when the necessary safeguards and partners are in place.</p><hr><strong>Regional ambition</strong><p>Investigate how AI could improve access to individualized learning assistance in Santiago del Estero.</p></aside>
+    </div></section>
+    <section class="status" id="status" aria-labelledby="status-title"><div class="wrap two"><div><div class="kicker">Development status</div><h2 id="status-title">Research-led. Tested. Still evolving.</h2><p class="intro">NAOF is an early-stage engineering project, not a production-ready commercial service. The initial deterministic, local read-only kernel and router have been implemented. Further shadow-workflow capabilities are under incremental development and evaluation.</p>
+      <ul class="check-list"><li>Documented and version-controlled architecture</li><li>Read-only kernel, deterministic router and local CLI</li><li>Automated tests and separate technical review</li><li>Shadow-workflow development with bounded increments and explicit acceptance</li></ul></div>
+      <aside class="note"><div class="kicker">Current position</div><strong>Pre-commercial development</strong><p>Product-market validation, AI-provider integrations and production deployment remain future work. No paying customers, live Claude integration, school pilots or general-purpose autonomous agent runtime are claimed.</p></aside></div></section>
+    <section class="vision" id="vision" aria-labelledby="vision-title"><div class="wrap two"><div><div class="kicker">Long-term vision</div><h2 id="vision-title">Trustworthy AI workflows for business—and a path toward educational impact.</h2><p>Our aim is to turn a rigorously developed engineering framework into useful technology for teams and organizations. We intend to validate software engineering workflows first, then explore broader enterprise applications where traceability, accountability and human control matter.</p><p>Alongside a sustainable technology business, our founder hopes to contribute to educational innovation in Santiago del Estero. These remain long-term goals, not current commercial offerings or educational deployments.</p></div>
       <aside class="future"><strong>What guides the work</strong><p>Verifiable outcomes over opaque claims.</p><hr><strong>How development proceeds</strong><p>Bounded scope, tests, documented limitations and iterative evaluation.</p><hr><strong>What comes next</strong><p>Technical validation, product discovery and future collaboration opportunities.</p></aside></div></section>
-    <section class="contact" id="contact"><div class="wrap"><div class="contact-box"><div class="kicker">Connect</div><h2>Interested in accountable AI orchestration?</h2><p>NAOF is at an exploratory stage. We welcome conversations with engineering teams, researchers and potential future collaborators. A dedicated business contact address is being set up.</p><div class="buttons"><a class="button secondary" href="https://github.com/wranahui-ui" target="_blank" rel="noopener noreferrer">Visit the developer's GitHub ↗</a></div></div></div></section>
+    <section class="contact" id="contact"><div class="wrap"><div class="contact-box"><div class="kicker">Connect</div><h2>Interested in accountable AI orchestration?</h2><p>NAOF is in pre-commercial development. We welcome conversations with engineering teams, researchers, educators and prospective collaborators. A dedicated business contact address will be added once the project domain is activated.</p><div class="buttons"><a class="button secondary" href="https://github.com/wranahui-ui" target="_blank" rel="noopener noreferrer">Visit the developer's GitHub ↗</a></div></div></div></section>
   </main>
-  <footer><div class="wrap footer-inner"><span>© 2026 NAOF — Nahuel AI Orchestration Framework</span><span>Independent project · Argentina · Early-stage R&amp;D</span></div></footer>
+  <footer><div class="wrap footer-inner"><span>© 2026 NAOF — Nahuel AI Orchestration Framework</span><span>Independent project · Santiago del Estero, Argentina · Pre-commercial</span></div></footer>
 </body>
 </html>
