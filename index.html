@@ -36,6 +36,8 @@
     .buttons { display:flex; gap:12px; flex-wrap:wrap; margin-top:32px; }
     .button { display:inline-flex; min-height:48px; align-items:center; justify-content:center; padding:10px 20px; border-radius:10px; font-size:.92rem; font-weight:720; border:1px solid var(--line); transition:transform .2s,border-color .2s; }
     .button:hover { transform:translateY(-2px); border-color:var(--accent); }
+    button.button { cursor:pointer; font-family:inherit; }
+    .copy-status { color:var(--muted); font-size:.85rem; }
     .primary { background:var(--accent); border-color:var(--accent); color:#071a1d; }
     .secondary { background:rgba(255,255,255,.035); }
     .hero-note { margin-top:20px; color:#91a2b9; font-size:.84rem; }
@@ -126,8 +128,39 @@
       <aside class="note"><div class="kicker">Current position</div><strong>Pre-commercial development</strong><p>Product-market validation, AI-provider integrations and production deployment remain future work. No paying customers, live Claude integration, school pilots or general-purpose autonomous agent runtime are claimed.</p></aside></div></section>
     <section class="vision" id="vision" aria-labelledby="vision-title"><div class="wrap two"><div><div class="kicker">Long-term vision</div><h2 id="vision-title">Trustworthy AI workflows for business—and a path toward educational impact.</h2><p>Our aim is to turn a rigorously developed engineering framework into useful technology for teams and organizations. We intend to validate software engineering workflows first, then explore broader enterprise applications where traceability, accountability and human control matter.</p><p>Alongside a sustainable technology business, our founder hopes to contribute to educational innovation in Santiago del Estero. These remain long-term goals, not current commercial offerings or educational deployments.</p></div>
       <aside class="future"><strong>What guides the work</strong><p>Verifiable outcomes over opaque claims.</p><hr><strong>How development proceeds</strong><p>Bounded scope, tests, documented limitations and iterative evaluation.</p><hr><strong>What comes next</strong><p>Technical validation, product discovery and future collaboration opportunities.</p></aside></div></section>
-    <section class="contact" id="contact"><div class="wrap"><div class="contact-box"><div class="kicker">Connect</div><h2>Get in touch with NAOF</h2><p>NAOF is an independent, pre-commercial AI orchestration project. We welcome conversations with researchers, engineering teams, educators and prospective collaborators. Contact us at <a href="mailto:contacto@naof.com.ar">contacto@naof.com.ar</a>.</p><div class="buttons"><a class="button primary" href="mailto:contacto@naof.com.ar?subject=NAOF%20-%20Inquiry">Contact NAOF ↗</a><a class="button secondary" href="https://github.com/wranahui-ui" target="_blank" rel="noopener noreferrer">Visit the developer's GitHub ↗</a></div></div></div></section>
+    <section class="contact" id="contact"><div class="wrap"><div class="contact-box"><div class="kicker">Connect</div><h2>Get in touch with NAOF</h2><p>NAOF is an independent, pre-commercial AI orchestration project. We welcome conversations with researchers, engineering teams, educators and prospective collaborators. Contact us at <strong>contacto@naof.com.ar</strong>.</p><div class="buttons"><a class="button primary" href="https://mail.google.com/mail/?view=cm&amp;fs=1&amp;to=contacto%40naof.com.ar&amp;su=NAOF%20-%20Inquiry" target="_blank" rel="noopener noreferrer">Contact NAOF via Gmail ↗</a><button class="button secondary" id="copy-email" type="button">Copy email</button><a class="button secondary" href="https://github.com/wranahui-ui" target="_blank" rel="noopener noreferrer">Visit the developer's GitHub ↗</a></div><p class="copy-status" id="copy-status" role="status" aria-live="polite"></p></div></div></section>
   </main>
   <footer><div class="wrap footer-inner"><span>© 2026 NAOF — Nahuel AI Orchestration Framework</span><span>Independent project · Santiago del Estero, Argentina · Pre-commercial</span></div></footer>
+  <script>
+    (function () {
+      const button = document.getElementById('copy-email');
+      const status = document.getElementById('copy-status');
+      if (!button || !status) return;
+
+      button.addEventListener('click', async function () {
+        const email = 'contacto@naof.com.ar';
+        try {
+          if (navigator.clipboard && window.isSecureContext) {
+            await navigator.clipboard.writeText(email);
+          } else {
+            const field = document.createElement('textarea');
+            field.value = email;
+            field.style.position = 'fixed';
+            field.style.opacity = '0';
+            document.body.appendChild(field);
+            field.select();
+            const copied = document.execCommand('copy');
+            field.remove();
+            if (!copied) throw new Error('Copy unavailable');
+          }
+          button.textContent = 'Copied ✓';
+          status.textContent = 'Email address copied to clipboard.';
+        } catch (error) {
+          button.textContent = 'Copy email';
+          status.textContent = 'Copy unavailable. Select the email address above to copy it manually.';
+        }
+      });
+    }());
+  </script>
 </body>
 </html>
